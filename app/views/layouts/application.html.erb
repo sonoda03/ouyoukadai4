@@ -9,14 +9,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if user_signed_in? %>
+    <header>
       <%= render 'layouts/header' %>
-    <% end %>
+    </header>
+    
       <main>
-        <p id="notice"><%= notice %></p>
-        <div class="d-flex justify-content-center mb-2">
-          <%= render 'searches/form' %>
-        </div>
+        <% if user_signed_in? %>
+          <p id="notice"><%= notice %></p>
+          <div class="d-flex justify-content-center mb-2">
+            <%= render 'searches/form' %>
+          </div>
+        <% end %>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
