@@ -1,4 +1,2 @@
 $("#book-comment-index-<%= @book.id %>").html("<%= j(render 'book_comments/index', book: @book) %>");
-$("#book-comment-form").html("<%= j(render 'book_comments/form', book: @book, book_comment: @book_comment) %>");
-$("textarea").val('');
 $(".book-comment-count").html("コメント数:<%= j(render 'book_comments/count', book: @book) %>");

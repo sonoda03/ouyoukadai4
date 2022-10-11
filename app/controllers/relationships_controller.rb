@@ -3,16 +3,22 @@ class RelationshipsController < ApplicationController
 
   #フォローするとき
   def create
-    user = User.find(params[:user_id])
-    current_user.follow(user)
-    redirect_to request.referer
+    @user = User.find(params[:user_id])
+    current_user.follow(@user)
+    # 非同期のためにリダイレクト先を消し、
+    # redirect_to request.referer
+    # 新たに非同期用のjsフィルを指定
+    render 'replace_index_btn'
   end
 
   #フォローを外すとき
   def destroy
-    user = User.find(params[:user_id])
-    current_user.unfollow(user)
-    redirect_to request.referer
+    @user = User.find(params[:user_id])
+    current_user.unfollow(@user)
+    # 非同期のためにリダイレクト先を消す
+    # redirect_to request.referer
+    # 新たに非同期用のjsフィルを指定
+    render 'replace_index_btn'
   end
 
   #フォロー一覧
